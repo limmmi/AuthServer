@@ -1,0 +1,27 @@
+# 这个文件是要忽略上传GitHub编译好的依赖库文件
+
+# 编译输出文件夹
+build/
+out/
+cmake-build-*/
+
+# 动态库、静态库、目标文件
+*.so
+*.so.*
+*.a
+*.o
+
+# Windows 库与可执行文件
+*.dll
+*.lib
+*.exe
+
+# 可执行文件（无后缀）
+*/*
+!*/
+
+# IDE 配置文件
+.vscode/
+.idea/
+*.user
+*.swp
