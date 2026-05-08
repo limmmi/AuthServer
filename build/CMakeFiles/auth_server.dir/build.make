@@ -73,99 +73,99 @@ CMakeFiles/auth_server.dir/main.cpp.o: CMakeFiles/auth_server.dir/flags.make
 CMakeFiles/auth_server.dir/main.cpp.o: /home/yu/AuthServer/main.cpp
 CMakeFiles/auth_server.dir/main.cpp.o: CMakeFiles/auth_server.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/yu/AuthServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/auth_server.dir/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/auth_server.dir/main.cpp.o -MF CMakeFiles/auth_server.dir/main.cpp.o.d -o CMakeFiles/auth_server.dir/main.cpp.o -c /home/yu/AuthServer/main.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/auth_server.dir/main.cpp.o -MF CMakeFiles/auth_server.dir/main.cpp.o.d -o CMakeFiles/auth_server.dir/main.cpp.o -c /home/yu/AuthServer/main.cpp
 
 CMakeFiles/auth_server.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/auth_server.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yu/AuthServer/main.cpp > CMakeFiles/auth_server.dir/main.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yu/AuthServer/main.cpp > CMakeFiles/auth_server.dir/main.cpp.i
 
 CMakeFiles/auth_server.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/auth_server.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yu/AuthServer/main.cpp -o CMakeFiles/auth_server.dir/main.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yu/AuthServer/main.cpp -o CMakeFiles/auth_server.dir/main.cpp.s
 
 CMakeFiles/auth_server.dir/AuthService.cpp.o: CMakeFiles/auth_server.dir/flags.make
 CMakeFiles/auth_server.dir/AuthService.cpp.o: /home/yu/AuthServer/AuthService.cpp
 CMakeFiles/auth_server.dir/AuthService.cpp.o: CMakeFiles/auth_server.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/yu/AuthServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/auth_server.dir/AuthService.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/auth_server.dir/AuthService.cpp.o -MF CMakeFiles/auth_server.dir/AuthService.cpp.o.d -o CMakeFiles/auth_server.dir/AuthService.cpp.o -c /home/yu/AuthServer/AuthService.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/auth_server.dir/AuthService.cpp.o -MF CMakeFiles/auth_server.dir/AuthService.cpp.o.d -o CMakeFiles/auth_server.dir/AuthService.cpp.o -c /home/yu/AuthServer/AuthService.cpp
 
 CMakeFiles/auth_server.dir/AuthService.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/auth_server.dir/AuthService.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yu/AuthServer/AuthService.cpp > CMakeFiles/auth_server.dir/AuthService.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yu/AuthServer/AuthService.cpp > CMakeFiles/auth_server.dir/AuthService.cpp.i
 
 CMakeFiles/auth_server.dir/AuthService.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/auth_server.dir/AuthService.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yu/AuthServer/AuthService.cpp -o CMakeFiles/auth_server.dir/AuthService.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yu/AuthServer/AuthService.cpp -o CMakeFiles/auth_server.dir/AuthService.cpp.s
 
 CMakeFiles/auth_server.dir/Database.cpp.o: CMakeFiles/auth_server.dir/flags.make
 CMakeFiles/auth_server.dir/Database.cpp.o: /home/yu/AuthServer/Database.cpp
 CMakeFiles/auth_server.dir/Database.cpp.o: CMakeFiles/auth_server.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/yu/AuthServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/auth_server.dir/Database.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/auth_server.dir/Database.cpp.o -MF CMakeFiles/auth_server.dir/Database.cpp.o.d -o CMakeFiles/auth_server.dir/Database.cpp.o -c /home/yu/AuthServer/Database.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/auth_server.dir/Database.cpp.o -MF CMakeFiles/auth_server.dir/Database.cpp.o.d -o CMakeFiles/auth_server.dir/Database.cpp.o -c /home/yu/AuthServer/Database.cpp
 
 CMakeFiles/auth_server.dir/Database.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/auth_server.dir/Database.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yu/AuthServer/Database.cpp > CMakeFiles/auth_server.dir/Database.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yu/AuthServer/Database.cpp > CMakeFiles/auth_server.dir/Database.cpp.i
 
 CMakeFiles/auth_server.dir/Database.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/auth_server.dir/Database.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yu/AuthServer/Database.cpp -o CMakeFiles/auth_server.dir/Database.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yu/AuthServer/Database.cpp -o CMakeFiles/auth_server.dir/Database.cpp.s
 
 CMakeFiles/auth_server.dir/JWT.cpp.o: CMakeFiles/auth_server.dir/flags.make
 CMakeFiles/auth_server.dir/JWT.cpp.o: /home/yu/AuthServer/JWT.cpp
 CMakeFiles/auth_server.dir/JWT.cpp.o: CMakeFiles/auth_server.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/yu/AuthServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/auth_server.dir/JWT.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/auth_server.dir/JWT.cpp.o -MF CMakeFiles/auth_server.dir/JWT.cpp.o.d -o CMakeFiles/auth_server.dir/JWT.cpp.o -c /home/yu/AuthServer/JWT.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/auth_server.dir/JWT.cpp.o -MF CMakeFiles/auth_server.dir/JWT.cpp.o.d -o CMakeFiles/auth_server.dir/JWT.cpp.o -c /home/yu/AuthServer/JWT.cpp
 
 CMakeFiles/auth_server.dir/JWT.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/auth_server.dir/JWT.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yu/AuthServer/JWT.cpp > CMakeFiles/auth_server.dir/JWT.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yu/AuthServer/JWT.cpp > CMakeFiles/auth_server.dir/JWT.cpp.i
 
 CMakeFiles/auth_server.dir/JWT.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/auth_server.dir/JWT.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yu/AuthServer/JWT.cpp -o CMakeFiles/auth_server.dir/JWT.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yu/AuthServer/JWT.cpp -o CMakeFiles/auth_server.dir/JWT.cpp.s
 
 CMakeFiles/auth_server.dir/Crypto.cpp.o: CMakeFiles/auth_server.dir/flags.make
 CMakeFiles/auth_server.dir/Crypto.cpp.o: /home/yu/AuthServer/Crypto.cpp
 CMakeFiles/auth_server.dir/Crypto.cpp.o: CMakeFiles/auth_server.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/yu/AuthServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/auth_server.dir/Crypto.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/auth_server.dir/Crypto.cpp.o -MF CMakeFiles/auth_server.dir/Crypto.cpp.o.d -o CMakeFiles/auth_server.dir/Crypto.cpp.o -c /home/yu/AuthServer/Crypto.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/auth_server.dir/Crypto.cpp.o -MF CMakeFiles/auth_server.dir/Crypto.cpp.o.d -o CMakeFiles/auth_server.dir/Crypto.cpp.o -c /home/yu/AuthServer/Crypto.cpp
 
 CMakeFiles/auth_server.dir/Crypto.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/auth_server.dir/Crypto.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yu/AuthServer/Crypto.cpp > CMakeFiles/auth_server.dir/Crypto.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yu/AuthServer/Crypto.cpp > CMakeFiles/auth_server.dir/Crypto.cpp.i
 
 CMakeFiles/auth_server.dir/Crypto.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/auth_server.dir/Crypto.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yu/AuthServer/Crypto.cpp -o CMakeFiles/auth_server.dir/Crypto.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yu/AuthServer/Crypto.cpp -o CMakeFiles/auth_server.dir/Crypto.cpp.s
 
 CMakeFiles/auth_server.dir/Server.cpp.o: CMakeFiles/auth_server.dir/flags.make
 CMakeFiles/auth_server.dir/Server.cpp.o: /home/yu/AuthServer/Server.cpp
 CMakeFiles/auth_server.dir/Server.cpp.o: CMakeFiles/auth_server.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/yu/AuthServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/auth_server.dir/Server.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/auth_server.dir/Server.cpp.o -MF CMakeFiles/auth_server.dir/Server.cpp.o.d -o CMakeFiles/auth_server.dir/Server.cpp.o -c /home/yu/AuthServer/Server.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/auth_server.dir/Server.cpp.o -MF CMakeFiles/auth_server.dir/Server.cpp.o.d -o CMakeFiles/auth_server.dir/Server.cpp.o -c /home/yu/AuthServer/Server.cpp
 
 CMakeFiles/auth_server.dir/Server.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/auth_server.dir/Server.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yu/AuthServer/Server.cpp > CMakeFiles/auth_server.dir/Server.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yu/AuthServer/Server.cpp > CMakeFiles/auth_server.dir/Server.cpp.i
 
 CMakeFiles/auth_server.dir/Server.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/auth_server.dir/Server.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yu/AuthServer/Server.cpp -o CMakeFiles/auth_server.dir/Server.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yu/AuthServer/Server.cpp -o CMakeFiles/auth_server.dir/Server.cpp.s
 
 CMakeFiles/auth_server.dir/Logger.cpp.o: CMakeFiles/auth_server.dir/flags.make
 CMakeFiles/auth_server.dir/Logger.cpp.o: /home/yu/AuthServer/Logger.cpp
 CMakeFiles/auth_server.dir/Logger.cpp.o: CMakeFiles/auth_server.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/yu/AuthServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/auth_server.dir/Logger.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/auth_server.dir/Logger.cpp.o -MF CMakeFiles/auth_server.dir/Logger.cpp.o.d -o CMakeFiles/auth_server.dir/Logger.cpp.o -c /home/yu/AuthServer/Logger.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/auth_server.dir/Logger.cpp.o -MF CMakeFiles/auth_server.dir/Logger.cpp.o.d -o CMakeFiles/auth_server.dir/Logger.cpp.o -c /home/yu/AuthServer/Logger.cpp
 
 CMakeFiles/auth_server.dir/Logger.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/auth_server.dir/Logger.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yu/AuthServer/Logger.cpp > CMakeFiles/auth_server.dir/Logger.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yu/AuthServer/Logger.cpp > CMakeFiles/auth_server.dir/Logger.cpp.i
 
 CMakeFiles/auth_server.dir/Logger.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/auth_server.dir/Logger.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yu/AuthServer/Logger.cpp -o CMakeFiles/auth_server.dir/Logger.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yu/AuthServer/Logger.cpp -o CMakeFiles/auth_server.dir/Logger.cpp.s
 
 # Object files for target auth_server
 auth_server_OBJECTS = \
