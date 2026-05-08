@@ -102,6 +102,9 @@ private:
     // 客户端缓冲区
     std::map<int, std::string> clientBuffers_;
     
+    // 客户端信息 (fd -> IP:port)
+    std::map<int, std::string> clientInfos_;
+    
     static const int MAX_EVENTS = 1024;
     static const int BUFFER_SIZE = 4096;
 };

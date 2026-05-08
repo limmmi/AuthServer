@@ -8,19 +8,19 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -O2")
 find_package(OpenSSL REQUIRED)
 find_package(Threads REQUIRED)
 
-# LevelDB 动态库 (使用本地编译的版本)
 set(LEVELDB_ROOT "${CMAKE_SOURCE_DIR}/leveldb_install")
-find_library(LEVELDB_LIB leveldb 
-    PATHS ${LEVELDB_ROOT}/lib
-    NO_DEFAULT_PATH
-)
-if(NOT LEVELDB_LIB)
-    message(FATAL_ERROR "LevelDB library not found in ${LEVELDB_ROOT}/lib")
+
+# 使用静态库
+set(LEVELDB_STATIC_LIB "${LEVELDB_ROOT}/lib/libleveldb.a")
+if(NOT EXISTS ${LEVELDB_STATIC_LIB})
+    message(FATAL_ERROR "LevelDB static library not found: ${LEVELDB_STATIC_LIB}")
 endif()
+message(STATUS "Using LevelDB static library: ${LEVELDB_STATIC_LIB}")
 
 include_directories(
     ${CMAKE_SOURCE_DIR}
     ${LEVELDB_ROOT}/include
+    ${CMAKE_SOURCE_DIR}/spdlog/include    # 添加 spdlog 头文件路径
 )
 
 # 源文件
@@ -31,14 +31,15 @@ set(SOURCES
     JWT.cpp
     Crypto.cpp
     Server.cpp
+    Logger.cpp
 )
 
 # 生成可执行文件
 add_executable(auth_server ${SOURCES})
 
-# 链接库
+# 链接库（静态链接 LevelDB）
 target_link_libraries(auth_server
-    ${LEVELDB_LIB}
+    ${LEVELDB_STATIC_LIB}
     OpenSSL::SSL
     OpenSSL::Crypto
     Threads::Threads
@@ -46,4 +47,3 @@ target_link_libraries(auth_server
 
 # 安装目标
 install(TARGETS auth_server DESTINATION bin)
-install(FILES ${LEVELDB_LIB} DESTINATION bin)

@@ -1,4 +1,5 @@
 #include "Database.h"
+#include "Logger.h"
 #include <iostream>
 #include <leveldb/write_batch.h>
 
@@ -15,14 +16,14 @@ bool Database::Open(const std::string& path) {
         return true;  // 已经打开
     }
     
-    std::cerr << "[DEBUG] Opening database at: " << path << std::endl;
+    LOG_INFO("Opening database at: {}", path);
     leveldb::Status status = leveldb::DB::Open(options_, path, &db_);
     if (!status.ok()) {
-        std::cerr << "[ERROR] LevelDB Open failed: " << status.ToString() << std::endl;
+        LOG_ERROR("LevelDB Open failed: {}", status.ToString());
         db_ = nullptr;
         return false;
     }
-    std::cerr << "[DEBUG] Database opened successfully" << std::endl;
+    LOG_INFO("Database opened successfully");
     
     return true;
 }
@@ -35,24 +36,42 @@ void Database::Close() {
 }
 
 bool Database::Put(const std::string& key, const std::string& value) {
-    if (!db_) return false;
+    if (!db_) {
+        LOG_ERROR("Database Put failed: database not open");
+        return false;
+    }
     
     leveldb::Status status = db_->Put(leveldb::WriteOptions(), key, value);
-    return status.ok();
+    if (!status.ok()) {
+        LOG_ERROR("Database Put failed for key '{}': {}", key, status.ToString());
+        return false;
+    }
+    return true;
 }
 
 bool Database::Get(const std::string& key, std::string& value) {
-    if (!db_) return false;
+    if (!db_) {
+        LOG_ERROR("Database Get failed: database not open");
+        return false;
+    }
     
     leveldb::Status status = db_->Get(leveldb::ReadOptions(), key, &value);
     return status.ok();
 }
 
 bool Database::Delete(const std::string& key) {
-    if (!db_) return false;
+    if (!db_) {
+        LOG_ERROR("Database Delete failed: database not open");
+        return false;
+    }
     
     leveldb::Status status = db_->Delete(leveldb::WriteOptions(), key);
-    return status.ok();
+    if (!status.ok()) {
+        LOG_ERROR("Database Delete failed for key '{}': {}", key, status.ToString());
+        return false;
+    }
+    LOG_INFO("Database key deleted: {}", key);
+    return true;
 }
 
 bool Database::Exists(const std::string& key) {

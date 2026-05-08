@@ -1,6 +1,7 @@
 #include "AuthService.h"
 #include "Crypto.h"
 #include "JWT.h"
+#include "Logger.h"
 #include <fstream>
 #include <sstream>
 #include <iostream>
@@ -42,7 +43,7 @@ bool AuthService::Initialize() {
         g_firstUserIsAdmin = false;  // 已有用户，不再是第一个
     }
     
-    std::cout << "AuthService initialized, next user ID: " << nextUserId_ << std::endl;
+    LOG_INFO("AuthService initialized, next user ID: {}", nextUserId_);
     return true;
 }
 
@@ -122,37 +123,46 @@ bool AuthService::VerifyAdmin(const std::string& token) {
 
 std::string AuthService::Login(const std::string& username, const std::string& password) {
     if (username.empty() || password.empty()) {
+        LOG_WARN("Login failed: empty username or password");
         return "";
     }
     
     UserInfo info;
     if (!GetUserInfo(username, info)) {
+        LOG_WARN("Login failed: user not found - {}", username);
         return "";  // 用户不存在
     }
     
     // 验证密码
     if (!Crypto::VerifyPassword(password, info.passwordHash)) {
+        LOG_WARN("Login failed: wrong password - {}", username);
         return "";  // 密码错误
     }
     
     // 生成并返回 JWT（包含角色）
-    return GenerateJWT(info.userId, info.role);
+    std::string token = GenerateJWT(info.userId, info.role);
+    LOG_INFO("Login success: {} (role: {})", username, RoleToString(info.role));
+    return token;
 }
 
 bool AuthService::Register(const std::string& username, const std::string& password) {
     if (username.empty() || password.empty()) {
+        LOG_WARN("Register failed: empty username or password");
         return false;
     }
     
     if (username.length() < 3 || username.length() > 32) {
+        LOG_WARN("Register failed: username length invalid - {}", username);
         return false;
     }
     
     if (password.length() < 6 || password.length() > 128) {
+        LOG_WARN("Register failed: password length invalid - {}", username);
         return false;
     }
     
     if (db_.Exists(username)) {
+        LOG_WARN("Register failed: user already exists - {}", username);
         return false;
     }
     
@@ -160,7 +170,7 @@ bool AuthService::Register(const std::string& username, const std::string& passw
     UserRole role = g_firstUserIsAdmin ? UserRole::ADMIN : UserRole::NORMAL;
     if (g_firstUserIsAdmin) {
         g_firstUserIsAdmin = false;
-        std::cout << "First user registered as ADMIN: " << username << std::endl;
+        LOG_INFO("First user registered as ADMIN: {}", username);
     }
     
     UserInfo info;
@@ -169,13 +179,16 @@ bool AuthService::Register(const std::string& username, const std::string& passw
     info.passwordHash = Crypto::HashPassword(password);
     
     if (info.passwordHash.empty()) {
+        LOG_ERROR("Register failed: password hash failed - {}", username);
         return false;
     }
     
     if (!db_.Put(username, SerializeUserData(info))) {
+        LOG_ERROR("Register failed: database error - {}", username);
         return false;
     }
     
+    LOG_INFO("User registered: {} (role: {}, id: {})", username, RoleToString(role), info.userId);
     return true;
 }
 
@@ -185,23 +198,27 @@ bool AuthService::RegisterWithRole(const std::string& username,
                                    const std::string& adminToken) {
     // 验证调用者是否为管理员
     if (!VerifyAdmin(adminToken)) {
-        std::cerr << "RegisterWithRole failed: not admin" << std::endl;
+        LOG_WARN("Admin register failed: invalid admin token");
         return false;
     }
     
     if (username.empty() || password.empty()) {
+        LOG_WARN("Admin register failed: empty username or password");
         return false;
     }
     
     if (username.length() < 3 || username.length() > 32) {
+        LOG_WARN("Admin register failed: username length invalid - {}", username);
         return false;
     }
     
     if (password.length() < 6 || password.length() > 128) {
+        LOG_WARN("Admin register failed: password length invalid - {}", username);
         return false;
     }
     
     if (db_.Exists(username)) {
+        LOG_WARN("Admin register failed: user already exists - {}", username);
         return false;
     }
     
@@ -211,13 +228,15 @@ bool AuthService::RegisterWithRole(const std::string& username,
     info.passwordHash = Crypto::HashPassword(password);
     
     if (info.passwordHash.empty()) {
+        LOG_ERROR("Admin register failed: password hash failed - {}", username);
         return false;
     }
     
     if (!db_.Put(username, SerializeUserData(info))) {
+        LOG_ERROR("Admin register failed: database error - {}", username);
         return false;
     }
     
-    std::cout << "Admin registered new user: " << username << " with role: " << RoleToString(role) << std::endl;
+    LOG_INFO("Admin registered new user: {} (role: {}, id: {})", username, RoleToString(role), info.userId);
     return true;
 }

@@ -17,12 +17,6 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 48,
-				"parent" : 0
-			},
-			{
-				"command" : 0,
-				"file" : 0,
 				"line" : 49,
 				"parent" : 0
 			}
@@ -43,14 +37,15 @@
 			"type" : "target"
 		},
 		{
-			"backtrace" : 2,
+			"backtrace" : 1,
 			"component" : "Unspecified",
+			"cxxModuleBmiTarget" : 
+			{
+				"id" : "auth_server::@6890427a1f51a3e7e1df",
+				"index" : 0
+			},
 			"destination" : "bin",
-			"paths" : 
-			[
-				"leveldb_install/lib/libleveldb.so"
-			],
-			"type" : "file"
+			"type" : "cxxModuleBmi"
 		}
 	],
 	"paths" : 

@@ -27,25 +27,25 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 37,
+				"line" : 38,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 48,
+				"line" : 49,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 40,
+				"line" : 41,
 				"parent" : 0
 			},
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 21,
+				"line" : 20,
 				"parent" : 0
 			}
 		]
@@ -56,21 +56,22 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : " -Wall -O2"
-				},
-				{
-					"fragment" : "-std=gnu++11"
+					"fragment" : " -Wall -O2 -std=gnu++11"
 				}
 			],
 			"includes" : 
 			[
 				{
 					"backtrace" : 4,
-					"path" : "/home/yuh/AuthServer"
+					"path" : "/home/yu/AuthServer"
 				},
 				{
 					"backtrace" : 4,
-					"path" : "/home/yuh/AuthServer/leveldb_install/include"
+					"path" : "/home/yu/AuthServer/leveldb_install/include"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/home/yu/AuthServer/spdlog/include"
 				}
 			],
 			"language" : "CXX",
@@ -89,7 +90,8 @@
 				2,
 				3,
 				4,
-				5
+				5,
+				6
 			]
 		}
 	],
@@ -121,12 +123,8 @@
 				"role" : "flags"
 			},
 			{
-				"fragment" : "-Wl,-rpath,/home/yuh/AuthServer/leveldb_install/lib:",
-				"role" : "libraries"
-			},
-			{
 				"backtrace" : 3,
-				"fragment" : "../leveldb_install/lib/libleveldb.so",
+				"fragment" : "/home/yu/AuthServer/leveldb_install/lib/libleveldb.a",
 				"role" : "libraries"
 			},
 			{
@@ -160,7 +158,8 @@
 				2,
 				3,
 				4,
-				5
+				5,
+				6
 			]
 		}
 	],
@@ -200,6 +199,12 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "Server.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Logger.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],

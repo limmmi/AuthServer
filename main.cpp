@@ -1,5 +1,6 @@
 #include "AuthService.h"
 #include "Server.h"
+#include "Logger.h"
 #include <iostream>
 #include <csignal>
 #include <cstdlib>
@@ -10,7 +11,7 @@ static Server* g_server = nullptr;
 
 void SignalHandler(int sig) {
     if (sig == SIGINT || sig == SIGTERM) {
-        std::cout << "\nReceived signal " << sig << ", shutting down..." << std::endl;
+        LOG_INFO("Received signal {}, shutting down...", sig);
         if (g_server) {
             g_server->Stop();
         }
@@ -70,19 +71,26 @@ int main(int argc, char* argv[]) {
         }
     }
     
-    std::cout << "========================================" << std::endl;
-    std::cout << "       Auth Server Starting...          " << std::endl;
-    std::cout << "========================================" << std::endl;
-    std::cout << "Port: " << port << std::endl;
-    std::cout << "Private Key: " << privateKeyPath << std::endl;
-    std::cout << "Database: " << dbPath << std::endl;
-    std::cout << "Token Expire: " << tokenExpireSeconds << " seconds" << std::endl;
-    std::cout << "========================================" << std::endl;
+    // 初始化日志系统
+    if (!Logger::Initialize("./logs/auth_server.log", "info")) {
+        std::cerr << "Failed to initialize logger" << std::endl;
+        return 1;
+    }
+    
+    LOG_INFO("========================================");
+    LOG_INFO("       Auth Server Starting...          ");
+    LOG_INFO("========================================");
+    LOG_INFO("Port: {}", port);
+    LOG_INFO("Private Key: {}", privateKeyPath);
+    LOG_INFO("Database: {}", dbPath);
+    LOG_INFO("Token Expire: {} seconds", tokenExpireSeconds);
+    LOG_INFO("========================================");
     
     // 初始化认证服务
     AuthService authService(privateKeyPath, tokenExpireSeconds, dbPath);
     if (!authService.Initialize()) {
-        std::cerr << "Failed to initialize auth service" << std::endl;
+        LOG_ERROR("Failed to initialize auth service");
+        Logger::Shutdown();
         return 1;
     }
     
@@ -95,11 +103,15 @@ int main(int argc, char* argv[]) {
     signal(SIGTERM, SignalHandler);
     signal(SIGPIPE, SIG_IGN);  // 忽略管道破裂信号
     
-    std::cout << "Server is running. Press Ctrl+C to stop." << std::endl;
+    LOG_INFO("Server is running. Press Ctrl+C to stop.");
     
     // 启动服务器 (阻塞)
     server.Start();
     
-    std::cout << "Server stopped." << std::endl;
+    LOG_INFO("Server stopped.");
+    
+    // 关闭日志系统
+    Logger::Shutdown();
+    
     return 0;
 }

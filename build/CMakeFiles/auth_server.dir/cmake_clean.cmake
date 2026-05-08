@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/auth_server.dir/Database.cpp.o.d"
   "CMakeFiles/auth_server.dir/JWT.cpp.o"
   "CMakeFiles/auth_server.dir/JWT.cpp.o.d"
+  "CMakeFiles/auth_server.dir/Logger.cpp.o"
+  "CMakeFiles/auth_server.dir/Logger.cpp.o.d"
   "CMakeFiles/auth_server.dir/Server.cpp.o"
   "CMakeFiles/auth_server.dir/Server.cpp.o.d"
   "CMakeFiles/auth_server.dir/main.cpp.o"

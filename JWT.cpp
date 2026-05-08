@@ -1,3 +1,6 @@
+// 抑制 OpenSSL 3.0 弃用警告（旧版 RSA API 仍可用）
+#define OPENSSL_SUPPRESS_DEPRECATED
+
 #include "JWT.h"
 #include <openssl/pem.h>
 #include <openssl/evp.h>

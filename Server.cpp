@@ -1,4 +1,5 @@
 #include "Server.h"
+#include "Logger.h"
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
@@ -9,6 +10,7 @@
 #include <iostream>
 #include <sstream>
 #include <cctype>
+#include <string>
 
 Server::Server(int port, AuthService* authService)
     : port_(port)
@@ -148,13 +150,19 @@ void Server::HandleNewConnection() {
     int clientFd = accept(listenFd_, (struct sockaddr*)&clientAddr, &addrLen);
     if (clientFd == -1) {
         if (errno != EAGAIN && errno != EWOULDBLOCK) {
-            std::cerr << "accept error" << std::endl;
+            LOG_ERROR("accept error: {}", strerror(errno));
         }
         return;
     }
     
+    // 获取客户端IP
+    char clientIp[INET_ADDRSTRLEN];
+    inet_ntop(AF_INET, &clientAddr.sin_addr, clientIp, INET_ADDRSTRLEN);
+    int clientPort = ntohs(clientAddr.sin_port);
+    
     // 设置非阻塞
     if (!SetNonBlocking(clientFd)) {
+        LOG_ERROR("Failed to set non-blocking for client {}:{}", clientIp, clientPort);
         close(clientFd);
         return;
     }
@@ -164,11 +172,14 @@ void Server::HandleNewConnection() {
     ev.events = EPOLLIN | EPOLLET;  // 边缘触发
     ev.data.fd = clientFd;
     if (epoll_ctl(epollFd_, EPOLL_CTL_ADD, clientFd, &ev) == -1) {
+        LOG_ERROR("Failed to add client to epoll {}:{}", clientIp, clientPort);
         close(clientFd);
         return;
     }
     
     clientBuffers_[clientFd] = "";
+    clientInfos_[clientFd] = std::string(clientIp) + ":" + std::to_string(clientPort);
+    LOG_INFO("New client connected: {}:{}", clientIp, clientPort);
 }
 
 void Server::HandleClientData(int clientFd) {
@@ -216,7 +227,12 @@ void Server::HandleClientData(int clientFd) {
             
             // 发送响应
             std::string responseStr = BuildHttpResponse(response);
-            write(clientFd, responseStr.data(), responseStr.length());
+            ssize_t written = write(clientFd, responseStr.data(), responseStr.length());
+            if (written < 0) {
+                LOG_ERROR("Failed to send response to client");
+            } else if (static_cast<size_t>(written) < responseStr.length()) {
+                LOG_WARN("Response partially sent: {}/{} bytes", written, responseStr.length());
+            }
             
             // 关闭连接 (HTTP/1.0 短连接)
             CloseClient(clientFd);
@@ -225,6 +241,11 @@ void Server::HandleClientData(int clientFd) {
 }
 
 void Server::CloseClient(int clientFd) {
+    auto it = clientInfos_.find(clientFd);
+    if (it != clientInfos_.end()) {
+        LOG_INFO("Client disconnected: {}", it->second);
+        clientInfos_.erase(it);
+    }
     epoll_ctl(epollFd_, EPOLL_CTL_DEL, clientFd, nullptr);
     close(clientFd);
     clientBuffers_.erase(clientFd);
@@ -333,6 +354,8 @@ std::string Server::BuildHttpResponse(const HttpResponse& response) {
 }
 
 HttpResponse Server::RouteRequest(const HttpRequest& request) {
+    LOG_INFO("{} {} from client", request.method, request.path);
+    
     if (request.method == "POST" && request.path == "/api/login") {
         return HandleLogin(request);
     } else if (request.method == "POST" && request.path == "/api/register") {
@@ -345,6 +368,7 @@ HttpResponse Server::RouteRequest(const HttpRequest& request) {
         return HandleHealth(request);
     }
     
+    LOG_WARN("Unknown request: {} {}", request.method, request.path);
     HttpResponse response;
     response.statusCode = 404;
     response.body = BuildJson({{"error", "Not Found"}});
@@ -359,6 +383,7 @@ HttpResponse Server::HandleLogin(const HttpRequest& request) {
     auto itPassword = params.find("password");
     
     if (itUsername == params.end() || itPassword == params.end()) {
+        LOG_WARN("Login request missing username or password");
         response.statusCode = 400;
         response.body = BuildJson({{"error", "Missing username or password"}});
         return response;
@@ -393,6 +418,7 @@ HttpResponse Server::HandleRegister(const HttpRequest& request) {
     auto itPassword = params.find("password");
     
     if (itUsername == params.end() || itPassword == params.end()) {
+        LOG_WARN("Register request missing username or password");
         response.statusCode = 400;
         response.body = BuildJson({{"error", "Missing username or password"}});
         return response;
