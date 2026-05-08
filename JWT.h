@@ -3,6 +3,7 @@
 
 #include <string>
 #include <map>
+#include <vector>
 
 // JWT 令牌生成类 - 使用 RSA256 签名
 class JWT {

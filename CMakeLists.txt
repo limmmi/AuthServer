@@ -46,3 +46,4 @@ target_link_libraries(auth_server
 
 # 安装目标
 install(TARGETS auth_server DESTINATION bin)
+install(FILES ${LEVELDB_LIB} DESTINATION bin)

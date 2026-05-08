@@ -1,4 +1,5 @@
 #include "Database.h"
+#include <iostream>
 #include <leveldb/write_batch.h>
 
 Database::Database() : db_(nullptr) {
@@ -14,11 +15,14 @@ bool Database::Open(const std::string& path) {
         return true;  // 已经打开
     }
     
+    std::cerr << "[DEBUG] Opening database at: " << path << std::endl;
     leveldb::Status status = leveldb::DB::Open(options_, path, &db_);
     if (!status.ok()) {
+        std::cerr << "[ERROR] LevelDB Open failed: " << status.ToString() << std::endl;
         db_ = nullptr;
         return false;
     }
+    std::cerr << "[DEBUG] Database opened successfully" << std::endl;
     
     return true;
 }

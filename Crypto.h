@@ -2,6 +2,7 @@
 #define CRYPTO_H
 
 #include <string>
+#include <vector>
 
 // 密码加密类 - 使用 bcrypt 算法
 class Crypto {
