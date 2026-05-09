@@ -1,9 +1,12 @@
-# 这个文件是要忽略上传GitHub编译好的依赖库文件
+# 这个文件是要忽略上传GitHub的文件
 
 # 编译输出文件夹
 build/
 out/
 cmake-build-*/
+
+# LevelDB 编译产物
+leveldb_install/
 
 # 动态库、静态库、目标文件
 *.so
@@ -16,12 +19,17 @@ cmake-build-*/
 *.lib
 *.exe
 
-# 可执行文件（无后缀）
-*/*
-!*/
+# 密钥文件
+*.key
+
+# 数据库文件
+auth_db/
 
 # IDE 配置文件
 .vscode/
 .idea/
 *.user
 *.swp
+
+# leveldb 源码（从 GitHub 单独克隆）
+leveldb/

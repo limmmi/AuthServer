@@ -1,0 +1,32 @@
+========================================
+       Auth Server API Test
+========================================
+
+1. Testing health check...
+{"service":"auth_server","status":"ok"}
+
+2. Testing user registration...
+{"message":"User registered successfully","success":"true"}
+
+3. Testing duplicate registration (should fail)...
+{"error":"Registration failed (user may exist or invalid input)"}
+
+4. Testing user login...
+{"role":"admin","success":"true","token":"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzc4MzA4NjY4LCJleHAiOjE3NzgzOTUwNjh9.TK5VHcy5Q-tg0_ozO7yP65zfZNynjYluVwnPE2edyvW-KsUt2YkURgMPqO1IAql4T7Lag7EFYTqPUheTukqUhkcyhr0FshrP3plWQemekrky-tGjSXSgagr9AOhCA0qkRbgKn67KJoIId_zVbmaJTYDGBoBu0O8ggdJgV5fDL1eiPNu3kcg5j-x-QC7poAOSTVYiGg-T8zTPiwBZQlsEwf3uX5dT1APY2d7Hh-Lpj7iiEhHXxd4ROX6PNvUqIcuELw4d1XsxJlq3ejX7Txp2AhwiL34zJO9Ja3gztyVDZgGK9ph_VySsxgOTET6UtgXk9JHFavieSgiY7dnG2MpLmg","userId":"1"}
+
+
+Extracted JWT Token:
+eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzc4MzA4NjY4LCJleHAiOjE3NzgzOTUwNjh9.TK5VHcy5Q-tg0_ozO7yP65zfZNynjYluVwnPE2edyvW-KsUt2YkURgMPqO1IAql4T7Lag7EFYTqPUheTukqUhkcyhr0FshrP3plWQemekrky-tGjSXSgagr9AOhCA0qkRbgKn67KJoIId_zVbmaJTYDGBoBu0O8ggdJgV5fDL1eiPNu3kcg5j-x-QC7poAOSTVYiGg-T8zTPiwBZQlsEwf3uX5dT1APY2d7Hh-Lpj7iiEhHXxd4ROX6PNvUqIcuELw4d1XsxJlq3ejX7Txp2AhwiL34zJO9Ja3gztyVDZgGK9ph_VySsxgOTET6UtgXk9JHFavieSgiY7dnG2MpLmg
+
+5. Decoding JWT payload...
+{"sub":"1","role":"admin","iat":1778308668,"exp":1778395068}(raw: eyJzdWIiOiIxIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzc4MzA4NjY4LCJleHAiOjE3NzgzOTUwNjh9)
+
+6. Testing login with wrong password (should fail)...
+{"error":"Invalid username or password"}
+
+7. Testing login with non-existent user (should fail)...
+{"error":"Invalid username or password"}
+
+========================================
+           Test Completed
+========================================
